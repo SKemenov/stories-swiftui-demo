@@ -4,7 +4,7 @@ import SwiftUI
 struct Stories_DemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }

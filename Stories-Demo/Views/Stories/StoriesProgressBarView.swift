@@ -21,7 +21,7 @@ struct StoriesProgressBarView: View {
     // MARK: - View
     var body: some View {
         ProgressBarView(numberOfSections: storiesCount, progress: progress)
-            .padding(.top, AppSizes.Spacing.xxLarge)
+            .padding(.top, AppSizes.Spacing.Custom.progressBar)
             .padding(.horizontal, AppSizes.Spacing.small)
             .onAppear {
                 timer = Self.createTimer(configuration: timerConfiguration)

@@ -14,7 +14,6 @@ struct ProgressBarView: View {
     private let backgroundColor = AppColors.Universal.white
     private let accentColor = AppColors.Universal.blue
 
-
     // MARK: - View
     var body: some View {
         GeometryReader { geometry in
@@ -44,7 +43,7 @@ private struct MaskView: View {
     let backgroundColor: Color
 
     var body: some View {
-        HStack(spacing: AppSizes.Spacing.xxSmall) {
+        HStack(spacing: AppSizes.Spacing.Custom.progressBarElements) {
             ForEach(0..<numberOfSections, id: \.self) { _ in
                 MaskFragmentView(backgroundColor: backgroundColor)
             }

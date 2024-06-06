@@ -13,17 +13,23 @@ struct CloseButtonView: View {
 
     // MARK: - View
     var body: some View {
-        Button{
+        Button {
             action()
         } label: {
-            Image(systemName: "xmark.circle.fill")
-                .resizable()
-                .frame(width: AppSizes.Icon.medium, height: AppSizes.Icon.medium)
-                .foregroundStyle(AppColors.Universal.black)
+            ZStack {
+                Circle()
+                    .foregroundStyle(AppColors.Universal.white)
+                AppImages.Icons.cancel
+                    .resizable()
+                    .foregroundStyle(AppColors.Universal.black)
+            }
+            .frame(width: AppSizes.Size.button, height: AppSizes.Size.button)
         }
     }
 }
 
 #Preview {
-    CloseButtonView(action: { print("button")} )
+    CloseButtonView { print("button") }
+        .padding()
+        .background(AppColors.Universal.blue)
 }

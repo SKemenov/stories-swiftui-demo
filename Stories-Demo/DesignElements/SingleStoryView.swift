@@ -9,37 +9,47 @@ import SwiftUI
 
 struct SingleStoryView: View {
     // MARK: - Constants
-    let model: StoryModel
-
     private enum LineLimits {
         static let title = 2
         static let description = 3
     }
 
+    // MARK: - Properties
+    var model: Story
+
     // MARK: - View
     var body: some View {
-        // Custom background for each story. Change for image, video, etc.
-        model.backgroundColor
+        AppColors.Universal.black
             .ignoresSafeArea()
             .overlay {
-                VStack(alignment: .leading, spacing: AppSizes.Spacing.medium) {
-                    Spacer()
+                ZStack {
+                    Image(model.imageName)
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(RoundedRectangle(cornerRadius: AppSizes.CornerRadius.Custom.story))
+                        .padding(.top, AppSizes.Spacing.xSmall)
+                        .padding(.horizontal, .zero)
 
-                    Text(model.title)
-                        .font(AppFonts.Bold.title)
-                        .lineLimit(LineLimits.title)
+                    VStack(alignment: .leading, spacing: AppSizes.Spacing.medium) {
+                        Spacer()
 
-                    Text(model.description)
-                        .font(AppFonts.Regular.paragraph)
-                        .lineLimit(LineLimits.description)
+                        Text(model.title)
+                            .font(AppFonts.Bold.large)
+                            .lineLimit(LineLimits.title)
+
+                        Text(model.description)
+                            .font(AppFonts.Regular.large)
+                            .lineLimit(LineLimits.description)
+                    }
+                    .foregroundStyle(AppColors.Universal.white)
+                    .padding(.horizontal, AppSizes.Spacing.medium)
+                    .padding(.bottom, AppSizes.Spacing.Custom.story)
                 }
-                .foregroundStyle(AppColors.Universal.white)
-                .padding(.horizontal, AppSizes.Spacing.medium)
-                .padding(.bottom, AppSizes.Spacing.xxxLarge)
+                .padding(.bottom, AppSizes.Spacing.large)
             }
     }
 }
 
 #Preview {
-    SingleStoryView(model: StoryModel.mockData[0])
+    SingleStoryView(model: Story.mockData1[0])
 }
